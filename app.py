@@ -7,6 +7,7 @@ from sklearn.naive_bayes import MultinomialNB
 
 # Load dataset
 df = pd.read_csv("customer_support_tickets.csv")
+st.write(df.columns)
 
 # Clean text
 def clean_text(text):
@@ -14,7 +15,7 @@ def clean_text(text):
     text = text.translate(str.maketrans("", "", string.punctuation))
     return text
 
-df["clean_text"] = df["text"].apply(clean_text)
+df["clean_text"] = df["Ticket Description"].apply(clean_text)
 
 # Train model inside app
 vectorizer = TfidfVectorizer()
